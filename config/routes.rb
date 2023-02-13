@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/create'
+  get 'users/show'
+  get 'users/update'
+  get 'users/destroy'
 
   get 'articles', to: 'articles#index'
   post 'articles', to: 'articles#create'
