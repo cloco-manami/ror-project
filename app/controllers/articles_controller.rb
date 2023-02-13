@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
   def index
+    @articles = Article.all
+    render json: { status: 'SUCCESS', message: 'Loaded articles', data: @articles }
+
   end
 
   def create
