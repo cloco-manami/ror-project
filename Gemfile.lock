@@ -69,6 +69,7 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    byebug (11.1.3)
     concurrent-ruby (1.2.0)
     crass (1.0.6)
     date (3.3.3)
@@ -83,6 +84,9 @@ GEM
     io-console (0.6.0)
     irb (1.6.2)
       reline (>= 0.3.0)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
+      activesupport (>= 5.0.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -158,7 +162,9 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  byebug
   debug
+  jbuilder
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   sqlite3 (~> 1.4)
