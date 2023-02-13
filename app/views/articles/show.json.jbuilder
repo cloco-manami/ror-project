@@ -1,5 +1,5 @@
 json.result 'success'
 
 json.data do
-  json.partial! 'article', article: @article
+  json.partial! 'articles/article', article: @article
 end

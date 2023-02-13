@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: %i[ show update destroy ]
+
   def index
     @articles = Article.all
   end
@@ -11,22 +13,25 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
     unless @article.update(article_params)
       render json:@article.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
   end
 
   private
+
+  def set_article
+    @article = Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { "error": "Article not found" }, status: :not_found
+  end
 
   def article_params
     params.require(:article).permit(:title, :description)
