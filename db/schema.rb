@@ -10,20 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_13_064742) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_14_005256) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.text "content"
+    t.integer "order", default: 0
+    t.integer "status"
+    t.text "memo"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.integer "age"
+    t.integer "gender"
+    t.string "password", null: false
+    t.string "token"
+    t.string "phone_number"
+    t.date "birth_date"
+    t.float "height"
+    t.float "weight"
   end
 
 end
