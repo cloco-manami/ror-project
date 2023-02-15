@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     return error_validation(@user.errors) if @user.invalid?
 
-    @user.save!
+    @user.save!(context: :registration)
 
   end
 

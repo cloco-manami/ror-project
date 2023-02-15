@@ -12,7 +12,7 @@ class UserUpdateForm
                 :height,
                 :weight
 
-  validates :first_name, length: { in: 1..25, allow_blank: true }
+  # validates :first_name, length: { in: 1..25, allow_blank: true }
   validates :last_name, length: { in: 1..25, allow_blank: true }
   validates :first_name_kana, length: { in: 1..25, allow_blank: true }, format: {
     with: KANA_VALIDATION_FORMAT,

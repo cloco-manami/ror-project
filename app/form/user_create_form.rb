@@ -7,6 +7,7 @@ class UserCreateForm
                 :last_name_kana,
                 :age,
                 :gender,
+                :email,
                 :password,
                 :birth_date,
                 :height,
