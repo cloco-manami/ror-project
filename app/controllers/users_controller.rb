@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     @user.birth_date = form.birth_date unless form.birth_date.nil?
     @user.height = form.height unless form.height.nil?
     @user.weight = form.weight unless form.weight.nil?
-    # @user.set_age(@user.birth_date)
+    @user.set_age(@user.birth_date)
 
     return error_validation(@user.errors) if @user.invalid?
 
