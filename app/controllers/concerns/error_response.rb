@@ -1,5 +1,5 @@
 module ErrorResponse
-  extend ActiveRecord::Concern
+  extend ActiveSupport::Concern
 
   def error_validation(causes = nil, message = nil, message_body = nil)
     @code = 400
