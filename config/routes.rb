@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   post 'login' => 'auth#login'
   get 'users', to: 'users#index'
   post 'users', to: 'users#create'
-  get 'users/:id', to: 'users#show'
-  put 'users/:id', to: 'users#update'
-  delete 'users/:id', to: 'users#destroy'
+  get 'users/self', to: 'users#show'
+  put 'users/self', to: 'users#update'
+  delete 'users/self', to: 'users#destroy'
 
   get 'articles', to: 'articles#index'
   post 'articles', to: 'articles#create'

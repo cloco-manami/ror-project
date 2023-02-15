@@ -33,16 +33,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    # @user = @current_user
+    @user = @current_user
   end
 
   def update
     form = UserUpdateForm.new(params)
     error_validation(form.errors) if form.invalid?
 
-    @user = User.find(params[:id])
-     # @user = @current_user
+    @user = @current_user
 
     @user.first_name = form.first_name unless form.first_name.nil?
     @user.last_name = form.last_name unless form.last_name.nil?
@@ -63,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = @current_user
     @user.destroy
   end
 end
