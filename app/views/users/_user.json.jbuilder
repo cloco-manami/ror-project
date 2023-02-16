@@ -10,3 +10,4 @@ json.phone_number user.phone_number
 json.birth_date user.birth_date
 json.height format_height(user)
 json.weight format_weight(user)
+

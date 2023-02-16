@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user.last_name_kana = form.last_name_kana
     @user.gender = form.gender
     @user.email = form.email
+    @user.phone_number = form.phone_number
     @user.password = BCrypt::Password.create(form.password)
     @user.birth_date = form.birth_date
     @user.height = form.height
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
 
     return error_validation(@user.errors) if @user.invalid?
 
-    @user.save!(context: :registration)
+    @user.save!
 
   end
 
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
     @user.last_name_kana = form.last_name_kana unless form.last_name_kana.nil?
     @user.gender = form.gender unless form.gender.nil?
     @user.email = form.email unless form.email.nil?
+    @user.phone_number = form.phone_number.nil?
     @user.password = BCrypt::Password.create(form.password) unless form.password.nil?
     @user.birth_date = form.birth_date unless form.birth_date.nil?
     @user.height = form.height unless form.height.nil?

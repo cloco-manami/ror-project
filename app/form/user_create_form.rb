@@ -8,6 +8,7 @@ class UserCreateForm
                 :age,
                 :gender,
                 :email,
+                :phone_number,
                 :password,
                 :birth_date,
                 :height,
@@ -36,6 +37,7 @@ class UserCreateForm
     @last_name_kana = params[:last_name_kana]
     @gender = params[:gender]
     @email = params[:email]
+    @phone_number = params[:phone_number]
     @password = params[:password]
     @birth_date = params[:birth_date]
     @height = params[:height]
