@@ -1,4 +1,4 @@
-module UserHelper
+module UsersHelper
 
   def format_name(user)
     if user.gender == 1

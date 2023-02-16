@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  include UserHelper
+  include UsersHelper
   include Response
   include ErrorResponse
   include Authentication
