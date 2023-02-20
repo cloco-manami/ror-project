@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/create'
+  get 'posts/show'
+  get 'posts/update'
+  get 'posts/destroy'
 
   post 'login' => 'auth#login'
   get 'users', to: 'users#index'

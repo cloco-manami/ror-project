@@ -42,17 +42,17 @@ class UsersController < ApplicationController
 
     @user = @current_user
 
-    @user.first_name = form.first_name unless form.first_name.nil?
-    @user.last_name = form.last_name unless form.last_name.nil?
-    @user.first_name_kana = form.first_name_kana unless form.first_name_kana.nil?
-    @user.last_name_kana = form.last_name_kana unless form.last_name_kana.nil?
-    @user.gender = form.gender unless form.gender.nil?
-    @user.email = form.email unless form.email.nil?
-    @user.phone_number = form.phone_number unless form.phone_number.nil?
-    @user.password = BCrypt::Password.create(form.password) unless form.password.nil?
-    @user.birth_date = form.birth_date unless form.birth_date.nil?
-    @user.height = form.height unless form.height.nil?
-    @user.weight = form.weight unless form.weight.nil?
+    @user.first_name = form.first_name if form.first_name.present?
+    @user.last_name = form.last_name if form.last_name.present?
+    @user.first_name_kana = form.first_name_kana if form.first_name_kana.present?
+    @user.last_name_kana = form.last_name_kana if form.last_name_kana.present?
+    @user.gender = form.gender if form.gender.present?
+    @user.email = form.email if form.email.present?
+    @user.phone_number = form.phone_number if form.phone_number.present?
+    @user.password = BCrypt::Password.create(form.password) if form.password.present?
+    @user.birth_date = form.birth_date if form.birth_date.present?
+    @user.height = form.height if form.height.present?
+    @user.weight = form.weight if form.weight.present?
     @user.age_calculate(@user.birth_date)
 
     return error_validation(@user.errors) if @user.invalid?
