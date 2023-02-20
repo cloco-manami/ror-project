@@ -8,7 +8,5 @@ module Authentication
     return error_unauthorized if user.nil?
 
     @current_user = user
-
   end
 end
-

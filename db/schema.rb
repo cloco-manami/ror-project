@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_14_005256) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_17_031501) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -26,18 +26,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_005256) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
+    t.string "first_name", default: "t", null: false
+    t.string "last_name", default: "t", null: false
+    t.string "first_name_kana", default: "t", null: false
+    t.string "last_name_kana", default: "t", null: false
     t.integer "age"
     t.integer "gender"
-    t.string "password", null: false
+    t.string "password", default: "t", null: false
     t.string "token"
     t.string "phone_number"
     t.date "birth_date"
     t.float "height"
     t.float "weight"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

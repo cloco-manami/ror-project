@@ -1,4 +1,3 @@
-
 json.id user.id
 json.full_name format_name(user)
 json.first_name_kana user.first_name_kana
@@ -10,4 +9,3 @@ json.phone_number user.phone_number
 json.birth_date user.birth_date
 json.height format_height(user)
 json.weight format_weight(user)
-

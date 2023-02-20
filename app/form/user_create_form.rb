@@ -18,12 +18,12 @@ class UserCreateForm
   validates :last_name, presence: true, length: { in: 1..25 }
   validates :first_name_kana, presence: true, length: { in: 1..25 }, format: {
     with: KANA_VALIDATION_FORMAT,
-    message: "Field must be in Katakana format.",
+    message: 'Field must be in Katakana format.',
     allow_blank: true
   }
   validates :last_name_kana, presence: true, length: { in: 1..25 }, format: {
     with: KANA_VALIDATION_FORMAT,
-    message: "Field must be in katakana format.",
+    message: 'Field must be in katakana format.',
     allow_blank: true
   }
   validates :birth_date, presence: true

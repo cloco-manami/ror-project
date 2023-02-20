@@ -3,5 +3,5 @@ class ApplicationController < ActionController::API
   include Response
   include ErrorResponse
   include Authentication
-
+  include UserInfo
 end

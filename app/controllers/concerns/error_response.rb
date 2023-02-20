@@ -20,5 +20,4 @@ module ErrorResponse
     @cause = nil
     render template: 'response/error', status: :unauthorized
   end
-
 end

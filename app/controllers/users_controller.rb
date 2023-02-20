@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     form = UserCreateForm.new(params)
     return error_validation(form.errors) if form.invalid?
 
-    puts form.first_name
+    Rails.logger.debug form.first_name
 
     @user = User.new
     @user.first_name = form.first_name
@@ -24,13 +24,12 @@ class UsersController < ApplicationController
     @user.birth_date = form.birth_date
     @user.height = form.height
     @user.weight = form.weight
-    @user.set_age(@user.birth_date)
+    @user.age_calculate(@user.birth_date)
     @user.token = Digest::UUID.uuid_v4
 
     return error_validation(@user.errors) if @user.invalid?
 
     @user.save!
-
   end
 
   def show
@@ -49,17 +48,16 @@ class UsersController < ApplicationController
     @user.last_name_kana = form.last_name_kana unless form.last_name_kana.nil?
     @user.gender = form.gender unless form.gender.nil?
     @user.email = form.email unless form.email.nil?
-    @user.phone_number = form.phone_number.nil?
+    @user.phone_number = form.phone_number unless form.phone_number.nil?
     @user.password = BCrypt::Password.create(form.password) unless form.password.nil?
     @user.birth_date = form.birth_date unless form.birth_date.nil?
     @user.height = form.height unless form.height.nil?
     @user.weight = form.weight unless form.weight.nil?
-    @user.set_age(@user.birth_date)
+    @user.age_calculate(@user.birth_date)
 
     return error_validation(@user.errors) if @user.invalid?
 
     @user.save!
-
   end
 
   def destroy

@@ -1,9 +1,8 @@
 module UsersHelper
-
   def format_name(user)
     if user.gender == 1
       "Mr. #{user.first_name} #{user.last_name}"
-    elsif user.gender == 0
+    elsif user.gender.zero?
       "Ms. #{user.first_name} #{user.last_name}"
     else
       "#{user.first_name} #{user.last_name}"
@@ -11,27 +10,20 @@ module UsersHelper
   end
 
   def format_height(user)
-    if user.height.present?
-      "#{user.height} cm"
-    else
-      nil
-    end
+    return if user.height.blank?
+
+    "#{user.height} cm"
   end
 
   def format_weight(user)
-    if user.weight.present?
-      "#{user.weight} kg"
-    else
-      nil
-    end
+    return if user.weight.blank?
+
+    "#{user.weight} kg"
   end
 
   def format_gender(user)
-    if user.gender.present?
-      GENDER_OPTIONS[user.gender]
-    else
-      nil
-    end
-  end
+    return if user.gender.blank?
 
+    GENDER_OPTIONS[user.gender]
+  end
 end
