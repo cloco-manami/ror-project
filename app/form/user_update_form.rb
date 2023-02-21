@@ -31,6 +31,8 @@ class UserUpdateForm
     message: 'Email format incorrect.',
     allow_blank: true
   }
+  validates :email, uniqueness: { message: 'Email should be unique. Please check your email.' }
+
   validates :password, length: { in: 8..50, allow_blank: true }, format: {
     with: PASSWORD_CONTAINS_FORMAT,
     message: 'Password must have only half width alphanumeric characters and must include upper/lowercase and digit',

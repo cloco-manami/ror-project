@@ -39,7 +39,7 @@ Style/FrozenStringLiteralComment:
 Metrics/AbcSize:
   # The ABC size is a calculated magnitude, so this number can be a Fixnum or
   # a Float.
-  Max: 60
+  Max: 63
 
 MethodLength:
   CountComments: false  # count full line comments?

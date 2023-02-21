@@ -5,6 +5,7 @@ class AuthLoginForm
                 :password
 
   validates :email, presence: true
+
   validates :password, presence: true
 
   def initialize(params = {})
