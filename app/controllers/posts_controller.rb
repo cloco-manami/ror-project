@@ -2,8 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user
   before_action :set_post, only: %i[show update destroy]
   def index
-    @posts = Post.all
-    # where(author_id: @current_user.id)
+    @posts = Post.where(author_id: @current_user.id)
   end
 
   def create
