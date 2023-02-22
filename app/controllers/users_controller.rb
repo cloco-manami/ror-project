@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def update
     form = UserUpdateForm.new(params)
-    error_validation(form.errors) if form.invalid?
+    return error_validation(form.errors) if form.invalid?
 
     @user = @current_user
 
@@ -55,9 +55,7 @@ class UsersController < ApplicationController
     @user.weight = form.weight if form.weight.present?
     @user.age_calculate(@user.birth_date)
 
-    error_uniqueness unless @user.email == @current_user.email
-
-    error_validation(@user.errors) if @user.invalid?
+    return error_validation(@user.errors) if @user.invalid?
 
     @user.save!
   end

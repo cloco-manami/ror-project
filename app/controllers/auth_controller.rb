@@ -11,3 +11,5 @@ class AuthController < ApplicationController
     error_unauthorized('Access Denied!')
   end
 end
+
+

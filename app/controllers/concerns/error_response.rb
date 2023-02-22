@@ -21,13 +21,4 @@ module ErrorResponse
     render template: 'response/error', status: :unauthorized
   end
 
-  def response_conflict(message = nil, message_body = nil)
-    @code = 409
-    @url = request.url
-    @message = 'Email should be unique. Please check you email.'
-    @message = message unless message.nil?
-    @message_body = message_body unless message_body.nil?
-    @cause = nil
-    render template: 'response/error', status: :conflict
-  end
 end

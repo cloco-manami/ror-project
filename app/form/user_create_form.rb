@@ -29,6 +29,7 @@ class UserCreateForm
   validates :birth_date, presence: true
   validates :height, numericality: { only_integer: true, greater_than_or_equal_to: 50, less_than_or_equal_to: 500 }
   validates :weight, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }
+  validates :email, unique_email: true
 
   def initialize(params = {})
     @first_name = params[:first_name]

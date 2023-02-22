@@ -1,6 +1,5 @@
 class UserUpdateForm
   include ActiveModel::Model
-
   attr_accessor :first_name,
                 :last_name,
                 :first_name_kana,
@@ -26,12 +25,17 @@ class UserUpdateForm
     allow_blank: true
   }
   validates :gender, inclusion: { in: GENDER_OPTIONS, allow_blank: true }
-  validates :email, length: { in: 5..255, allow_blank: true }, format: {
-    with: EMAIL_VALIDATION_FORMAT,
-    message: 'Email format incorrect.',
-    allow_blank: true
-  }
-  validates :email, uniqueness: { message: 'Email should be unique. Please check your email.' }
+  validates :email, format: {
+      with: EMAIL_VALIDATION_FORMAT,
+      message: 'Email format incorrect.',
+      allow_blank: true
+    }
+  # validates :email, uniqueness: true, length: { in: 5..255, allow_blank: true }, format: {
+  #   with: EMAIL_VALIDATION_FORMAT,
+  #   message: 'Email format incorrect.',
+  #   allow_blank: true
+  # }
+  # validates :email, uniqueness: { case_sensitive: false, scope: :user, message: 'Email should be unique. Please check your email.' }
 
   validates :password, length: { in: 8..50, allow_blank: true }, format: {
     with: PASSWORD_CONTAINS_FORMAT,

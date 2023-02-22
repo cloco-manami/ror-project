@@ -1,13 +1,24 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user
   def index
     @posts = Post.all
     # where(author_id: @current_user.id)
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :meta_title, :slug, :summary, :content,
-                                                  :author_name_katakana, :published, :published_date))
+    form = PostCreateForm.new(params)
+    return error_validation(form.errors) if form.invalid?
+
+    @post = Post.new
     @post.author_id = @current_user.id
+    @post.title = params[:title]
+    @post.meta_title = params[:meta_title]
+    @post.slug = params[:slug]
+    @post.summary = params[:summary]
+    @post.content = params[:content]
+
+    return error_validation(@post.errors) if @post.invalid?
+
     @post.save!
   end
 
