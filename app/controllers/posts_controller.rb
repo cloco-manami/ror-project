@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user
-  before_action :set_post, only: %i[show update destroy]
+  before_action :set_post, only: %i[show update destroy publish unpublish]
   def index
     @posts = Post.where(author_id: @current_user.id)
   end
@@ -42,6 +42,20 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
+  end
+
+  def publish
+    @post.published = 1
+    @post.published_date = DateTime.now()
+    @post.save!
+    render_success(true)
+  end
+
+  def unpublish
+    @post.published = 0
+    @post.published_date = nil
+    @post.save!
+    render_success(true)
   end
 
   private

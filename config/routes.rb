@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   post 'posts', to: 'posts#create'
   get 'posts/:id', to: 'posts#show'
   put 'posts/:id', to: 'posts#update'
+  patch 'posts/:id/publish', to: 'posts#publish'
+  patch 'posts/:id/unpublish', to: 'posts#unpublish'
   delete 'posts/:id', to: 'posts#destroy'
+
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
