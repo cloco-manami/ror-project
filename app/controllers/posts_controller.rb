@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user
+  before_action :set_post, only: %i[show update destroy]
   def index
     @posts = Post.all
     # where(author_id: @current_user.id)
@@ -24,7 +25,32 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def update; end
+  def update
+    form = PostUpdateForm.new(params)
+    return error_validation(form.errors) if form.invalid?
 
-  def destroy; end
+    @post.author_id = @current_user.id
+    @post.title = form.title if form.title.present?
+    @post.meta_title = form.meta_title if form.meta_title.present?
+    @post.slug = form.slug if form.slug.present?
+    @post.summary = form.summary if form.summary.present?
+    @post.content = form.content if form.content.present?
+
+    return error_validation(@post.errors) if @post.invalid?
+
+    @post.save!
+  end
+
+  def destroy
+    @post.destroy!
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { "error": 'Post not found' }, status: :not_found
+  end
+
 end
